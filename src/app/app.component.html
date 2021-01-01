@@ -4,7 +4,7 @@
 
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" [opened]="sidebarToggle">
-    <app-sidenav></app-sidenav>
+    <app-sidenav (click)="mobileDevice && toggleSideBar()"></app-sidenav>
   </mat-drawer>
   
   <mat-drawer-content>

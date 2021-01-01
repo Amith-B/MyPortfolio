@@ -32,6 +32,10 @@ $barColor: #f44336;
 .example-card {
   width: 270px;
   margin: 10px;
+  p {
+    height: 100px;
+    overflow-y: auto;
+  }
   img {
     height: 270px;
     width: 270px;

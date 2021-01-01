@@ -1,0 +1,19 @@
+$profileSize: 8em;
+
+.profile-card {
+  text-align: center;
+  padding: 20px;
+  img {
+    height: $profileSize;
+    height: $profileSize;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+.name {
+  padding-top: 15px;
+}
+
+.email {
+  line-height: 0px;
+}

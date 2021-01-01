@@ -1,0 +1,57 @@
+<mat-nav-list>
+    <div class="profile-card">
+        <img src="../../../../assets/profile.jpg" alt="dog">
+        <div class="header">
+            <h1 class="name">Amith</h1>
+            <h4 class="email">{{data.info.email}}</h4>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+    
+    <mat-list-item routerLink="/home">
+        <mat-icon matListIcon>home</mat-icon>
+        <h4 matLine>Home</h4>
+    </mat-list-item>
+    <mat-list-item routerLink="/about">
+        <mat-icon matListIcon>person</mat-icon>
+        <h4 matLine>About</h4>
+    </mat-list-item>
+    <mat-list-item routerLink="/portfolio">
+        <mat-icon matListIcon>business_center</mat-icon>
+        <h4 matLine>Portfolio</h4>
+    </mat-list-item>
+    <mat-list-item routerLink="/contact">
+        <mat-icon matListIcon>contact_phone</mat-icon>
+        <h4 matLine>Contact</h4>
+    </mat-list-item>
+    <!-- <mat-divider></mat-divider>
+        <h3 matSubheader>Servers Agents</h3>
+        <mat-list-item (click)="setNav('All Servers')" routerLink="/servers">
+            <mat-icon matListIcon>dns</mat-icon>
+            <h4 matLine>Servers</h4>
+        </mat-list-item>
+        <mat-list-item (click)="setNav('Servers Up')" routerLink="/serversup">
+            <mat-icon matListIcon class="material-icons">power</mat-icon>
+            <h4 matLine>Servers Up</h4>
+        </mat-list-item>
+        <mat-list-item (click)="setNav('Servers Down')" routerLink="/serversdown">
+            <mat-icon matListIcon>power_off</mat-icon>
+            <h4 matLine>Servers Down</h4>
+        </mat-list-item>
+    <mat-divider></mat-divider>
+        <h3 matSubheader>App Agents</h3>
+        <mat-list-item routerLink="/servers">
+            <mat-icon matListIcon>dns</mat-icon>
+            <h4 matLine>AppAgents</h4>
+        </mat-list-item>
+        <mat-list-item routerLink="/serversup">
+            <mat-icon matListIcon class="material-icons">power</mat-icon>
+            <h4 matLine>AppAgents Up</h4>
+        </mat-list-item>
+        <mat-list-item routerLink="/serversdown">
+            <mat-icon matListIcon>power_off</mat-icon>
+            <h4 matLine>AppAgents Down</h4>
+        </mat-list-item>
+    <mat-divider></mat-divider> -->
+</mat-nav-list>

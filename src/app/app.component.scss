@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer {
+  width: 16em;
+}
+
+mat-drawer-container {
+  flex: 1;
+}

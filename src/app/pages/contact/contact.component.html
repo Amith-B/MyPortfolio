@@ -1,0 +1,91 @@
+<div class="container contact-contianer">
+    <h1 class="title">Contact Me</h1>
+    <div class="bar">
+        <div class="bar-large"></div>
+        <div class="bar-small"></div>
+    </div>
+    <br>
+    <br>
+
+    <div
+        fxLayout.sm="column" 
+        fxLayout.xs="column" 
+        fxLayout="row" 
+        fxLayoutAlign="space-around" 
+        fxLayoutGap="20px">
+        <div fxLayout="column" class="info-div">
+            <div class="icon">
+                <mat-icon [inline]="true" color="warn">call</mat-icon>
+            </div>
+            <h2>Call Me On</h2>
+            <h4>{{data.info.phone}}</h4>
+        </div>
+        <div fxLayout="column" class="info-div">
+            <div class="icon">
+                <mat-icon [inline]="true" color="warn">location_on</mat-icon>
+            </div>
+            <h2>Address</h2>
+            <h4>{{data.info.address.line1}}</h4>
+                <h4>
+                  {{data.info.address.line2}}
+                </h4> 
+        </div>
+        <div fxLayout="column" class="info-div">
+            <div class="icon">
+                <mat-icon [inline]="true" color="warn">email</mat-icon>
+            </div>
+            <h2>Email</h2>
+            <h4>{{data.info.email}}</h4>
+        </div>
+    </div>
+
+    <br>
+
+    <mat-divider></mat-divider>
+
+    <br>
+    <br>
+
+    <form action="POST">
+        <div fxLayout="column">
+
+        <div 
+            fxLayout.sm="column"
+            fxLayout.xs="column"
+            fxLayout="row"
+            fxLayoutGap="20px">
+          <mat-form-field fxFlex="40" appearance="outline" color="accent">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Enter your name">
+            <mat-icon matSuffix>perm_identity</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="60" appearance="outline" color="accent">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Enter your mail id">
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </div>
+
+          <mat-form-field fxFlex="100" appearance="outline" color="accent">
+            <mat-label>Subject</mat-label>
+            <input matInput placeholder="Enter the subject">
+            <mat-icon matSuffix>title</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="100" appearance="outline" color="accent">
+            <mat-label>Message</mat-label>
+            <textarea matInput placeholder="Type your message to me"></textarea>
+            <mat-icon matSuffix>subject</mat-icon>
+          </mat-form-field>
+
+          <div fxLayout="row" fxLayoutAlign="end none">
+            <button mat-raised-button color="warn" type="submit">Submit</button>
+          </div>
+        
+        </div>
+    </form>
+    <br>
+    <br>
+
+</div>

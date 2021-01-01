@@ -1,0 +1,36 @@
+<div class="container portfolio-contianer">
+    <h1 class="title">Portfolio</h1>
+    <div class="bar">
+        <div class="bar-large"></div>
+        <div class="bar-small"></div>
+    </div>
+    <br>
+    <br>
+
+    <div *ngIf="spin" fxFlexFill fxLayoutAlign="center center">
+        <mat-spinner color="warn"></mat-spinner>
+    </div>
+
+    <div class="container" *ngIf="!spin">
+    
+        <div fxLayout="row wrap" fxLayoutAlign="space-around start">
+            <mat-card class="example-card" *ngFor="let card of data">
+                <mat-card-header>
+                <mat-card-title>{{card.cardTitle}}</mat-card-title>
+                <mat-card-subtitle>{{card.cardSubTitle}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{card.imageURL}}" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                <p>
+                    {{card.description}}
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                <a target="_blank" class="btn btn-danger" href="{{card.projectURL}}">Visit</a>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+    </div>
+
+</div>

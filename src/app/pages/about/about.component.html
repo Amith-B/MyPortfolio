@@ -1,0 +1,186 @@
+<div class="container about-contianer">
+    <h1 class="title">About Me</h1>
+    <div class="bar">
+        <div class="bar-large"></div>
+        <div class="bar-small"></div>
+    </div>
+    <br>
+    <br>
+
+    <h1>I'm Amith B and a Web Developer</h1>
+    <p class="para">
+        {{data.info.about_para}}
+    </p>
+
+    <div 
+        fxLayout.md="column"
+        fxLayout.sm="column"
+        fxLayout.xs="column"
+        fxLayout="row" 
+        fxLayoutAlign="space-around center">
+        
+        <div 
+            class="about-contianer-info"
+            fxFlex="50" 
+            fxLayout="row" 
+            fxLayout.xs="column"
+            fxLayoutGap="20px">
+            <div fxLayout="column">
+                <mat-divider></mat-divider>
+                <br>
+                <div class="info-list-item">
+                    <h3>
+                        Birthday: <span>{{dob | date:'longDate'}}</span>
+                    </h3>
+                    
+                </div>
+                <mat-divider></mat-divider>
+                <br>
+                <div class="info-list-item">
+                    <h3>
+                        Degree: <span>{{data.info.degree}}</span>
+                    </h3>
+                </div>
+                <mat-divider></mat-divider>
+                <br>
+                <div class="info-list-item">
+                    <h3>
+                        Department: <span>{{data.info.dept}}</span>
+                    </h3>
+                </div>
+                <mat-divider></mat-divider>
+                <br>
+                <div class="info-list-item">
+                    <h3>
+                        Eng. Pass Out Year: <span>{{data.info.passout}}</span>
+                    </h3>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+            <div fxLayout="column">
+                <mat-divider fxHide.xs></mat-divider>
+                <br fxHide.xs>
+                <div class="info-list-item">
+                    <h3>
+                        City: <span>{{data.info.city}}</span>
+                    </h3>
+                    
+                </div>
+                <mat-divider></mat-divider>
+                <br>
+                <div class="info-list-item">
+                    <h3>
+                        Age: <span>{{age}}</span>
+                    </h3>
+                </div>
+                <mat-divider></mat-divider>
+                <br>
+                <div class="info-list-item">
+                    <h3>
+                        Phone: <span>{{data.info.phone}}</span>
+                    </h3>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+        </div>
+
+        
+        <div class="lang-card" fxFlex>
+            <h1 style="font-weight: bold;">
+                Coding proficiency
+            </h1>
+            <div fxLayout="column">
+                <mat-card>
+                    <div *ngFor="let lang of data.knowledge">
+                        
+                        <div fxLayout="row" fxLayoutAlign="space-between center">
+                            <div>
+                                {{lang.name}}
+                            </div>
+                            <div>
+                                {{lang.percentage}}%
+                            </div>
+                        </div>
+                        <mat-progress-bar mode="determinate" color="warn" value="{{lang.percentage}}"></mat-progress-bar>
+                        <br>
+                    </div>
+                </mat-card>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div 
+        fxLayout.md="column"
+        fxLayout.sm="column"
+        fxLayout.xs="column"
+        fxLayout="row">
+        <div class="education">
+            <h1 style="font-weight: bold;">
+                Education
+            </h1> 
+            <mat-card>
+                <div>
+                    <mat-vertical-stepper color="warn" [linear]="false" #stepper>
+                        <mat-step label="{{education.date_range}}" *ngFor="let education of data.eduction" [completed]="true" state="dot" [editable]="false">
+                            <h2 style="font-weight: bold;" class="education-header">{{education.heading}}</h2>
+                            <p class="education-description">{{education.description}}</p>
+                            <div class="education-percentage">{{education.percentage}}</div>
+                        </mat-step>
+
+                        <ng-template matStepperIcon="dot">
+                            <!-- <mat-icon style="color:#c2185b">fiber_manual_record</mat-icon> -->
+                            <mat-icon>date_range</mat-icon>
+                        </ng-template>
+
+                        
+                        <ng-template matStepperIcon="done">
+                            <!-- <mat-icon style="color:#c2185b">fiber_manual_record</mat-icon> -->
+                            <mat-icon>date_range</mat-icon>
+                        </ng-template>
+
+                      </mat-vertical-stepper>
+                </div>
+            </mat-card>
+        </div>
+    
+        <div class="experience">
+            <h1 style="font-weight: bold;">
+                Experience
+            </h1>
+            <mat-card>
+                <div>
+                    <mat-vertical-stepper color="warn" [linear]="false" #stepper>
+                        <mat-step label="{{experience.date_range}}" *ngFor="let experience of data.experience" [completed]="true" state="dot" [editable]="false">
+                            <h2 style="font-weight: bold;" class="experience-designation">
+                                {{experience.designation}}
+                            </h2>
+                            <h4 class="experience-company">{{experience.company}}</h4>
+                            <div class="experience-description">
+                                <ul>
+                                    <li *ngFor="let point of experience.description">
+                                        {{point}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </mat-step>
+
+
+                        <ng-template matStepperIcon="dot">
+                            <!-- <mat-icon style="color:#c2185b">fiber_manual_record</mat-icon> -->
+                            <mat-icon>date_range</mat-icon>
+                        </ng-template>
+
+                        
+                        <ng-template matStepperIcon="done">
+                            <!-- <mat-icon style="color:#c2185b">fiber_manual_record</mat-icon> -->
+                            <mat-icon>date_range</mat-icon>
+                        </ng-template>
+
+                      </mat-vertical-stepper>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

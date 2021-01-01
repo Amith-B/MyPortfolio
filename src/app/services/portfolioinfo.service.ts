@@ -54,6 +54,13 @@ export interface portfolioDataInterface {
   projectURL:string
 }
 
+export interface messageInterface {
+  name: string;
+  mail: string;
+  subject: string; 
+  message: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -61,7 +68,7 @@ export class PortfolioinfoService {
   
   profileDataChangeEvent:EventEmitter<dataInterface>=new EventEmitter();
 
-  firebaseURL="https://amith-portfolio-default-rtdb.firebaseio.com/"
+  firebaseURL="https://amith-portfolio-default-rtdb.firebaseio.com"
 
   myInfo={};
 
@@ -192,4 +199,12 @@ export class PortfolioinfoService {
   getProfileInfo(){
     return this.myInfo
   }
+
+  pushMessages(data:messageInterface){
+    return this.http.post(
+        `${this.firebaseURL}/messages.json`,
+        data
+      );
+  }
+
 }

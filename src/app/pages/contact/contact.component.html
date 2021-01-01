@@ -44,9 +44,14 @@
     <mat-divider></mat-divider>
 
     <br>
+    
+    <div *ngIf="submited && !finished" fxFlexFill fxLayoutAlign="center center">
+      <mat-progress-bar color="warn" mode="indeterminate"></mat-progress-bar>
+    </div>
+    
     <br>
 
-    <form action="POST">
+    <form #f="ngForm" (ngSubmit)="submitForm()">
         <div fxLayout="column">
 
         <div 
@@ -56,31 +61,56 @@
             fxLayoutGap="20px">
           <mat-form-field fxFlex="40" appearance="outline" color="accent">
             <mat-label>Name</mat-label>
-            <input matInput placeholder="Enter your name">
+            <input
+              ngModel
+              required 
+              #name="ngModel"
+              name="name"
+              matInput 
+              placeholder="Enter your name">
             <mat-icon matSuffix>perm_identity</mat-icon>
           </mat-form-field>
 
           <mat-form-field fxFlex="60" appearance="outline" color="accent">
             <mat-label>Email</mat-label>
-            <input type="email" matInput placeholder="Enter your mail id">
+            <input 
+              type="email"
+              email
+              matInput 
+              ngModel
+              required 
+              #mail="ngModel"
+              name="mail"
+              placeholder="Enter your mail id">
             <mat-icon matSuffix>email</mat-icon>
           </mat-form-field>
         </div>
 
           <mat-form-field fxFlex="100" appearance="outline" color="accent">
             <mat-label>Subject</mat-label>
-            <input matInput placeholder="Enter the subject">
+            <input 
+              ngModel
+              #subject="ngModel"
+              name="subject"
+              matInput 
+              placeholder="Enter the subject">
             <mat-icon matSuffix>title</mat-icon>
           </mat-form-field>
 
           <mat-form-field fxFlex="100" appearance="outline" color="accent">
             <mat-label>Message</mat-label>
-            <textarea matInput placeholder="Type your message to me"></textarea>
+            <textarea
+              ngModel
+              required
+              #message="ngModel"
+              name="message" 
+              matInput 
+              placeholder="Type your message to me"></textarea>
             <mat-icon matSuffix>subject</mat-icon>
           </mat-form-field>
 
           <div fxLayout="row" fxLayoutAlign="end none">
-            <button mat-raised-button color="warn" type="submit">Submit</button>
+            <button [disabled]="!f.valid && f.touched" mat-raised-button color="warn" type="submit">Submit</button>
           </div>
         
         </div>

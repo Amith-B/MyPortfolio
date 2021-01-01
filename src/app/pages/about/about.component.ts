@@ -24,6 +24,7 @@ export class AboutComponent implements OnInit, OnDestroy {
   profileSubscription:Subscription;
 
   constructor(private portfolioinfoService:PortfolioinfoService,private pageHeading: PageheadingService) { }
+  
   ngOnDestroy(): void {
     this.profileSubscription.unsubscribe();
   }

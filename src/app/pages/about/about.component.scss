@@ -1,5 +1,7 @@
 $darkThemeColor: #f44336;
 $lightThemeColor: #ff6f00;
+$paraDarkThemeColor: darken(white, 20%);
+$paraLightThemeColor: darken(white, 60%);
 
 .about-contianer {
   padding-top: 50px;
@@ -9,13 +11,16 @@ $lightThemeColor: #ff6f00;
     font-weight: bold;
   }
   .para {
-    color: darken(white, 30%);
+    color: $paraLightThemeColor;
+  }
+  .para-dark {
+    color: $paraDarkThemeColor;
   }
 }
 
 .about-contianer-info {
   span {
-    color: darken(white, 40%);
+    color: darken(white, 50%);
   }
   .info-list-item {
     padding: 0 10px;
@@ -36,22 +41,35 @@ $lightThemeColor: #ff6f00;
 }
 
 .education-header,
-.experience-designation {
+.experience-designation,
+.education-header-dark,
+.experience-designation-dark {
   font-weight: bold;
-  // line-height: 0px;
 }
 
 .education-description {
   // line-height: 0px;
   font-size: 17px;
-  color: darken(white, 20%);
+  color: $paraLightThemeColor;
+}
+
+.education-description-dark {
+  font-size: 17px;
+  color: $paraDarkThemeColor;
 }
 
 .experience-description,
 .education-percentage {
   // line-height: 30px;
   font-size: 17px;
-  color: darken(white, 20%);
+  color: $paraLightThemeColor;
+}
+
+.experience-description-dark,
+.education-percentage-dark {
+  // line-height: 30px;
+  font-size: 17px;
+  color: $paraDarkThemeColor;
 }
 
 .bar-dark {

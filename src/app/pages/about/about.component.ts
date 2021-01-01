@@ -22,6 +22,7 @@ export class AboutComponent implements OnInit, OnDestroy {
   age:Number;
   data: dataInterface;
   
+  dark:boolean=true;
   themeClass:string='bar-dark';
 
 
@@ -47,10 +48,12 @@ export class AboutComponent implements OnInit, OnDestroy {
       this.age=this.calculate_age(this.dob);
     })
 
-    this.themeClass = this.themeService.getTheme()?"bar-dark":"bar-light";
+    this.dark=this.themeService.getTheme();
+    this.themeClass = this.dark?"bar-dark":"bar-light";
 
     this.themeSubscription=this.themeService.darkThemeEvent
         .subscribe((dark:boolean)=>{
+          this.dark=dark;
           this.themeClass = dark?"bar-dark":"bar-light";
         });
 

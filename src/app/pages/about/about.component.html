@@ -8,7 +8,7 @@
     <br>
 
     <h1>I'm Amith B and a Web Developer</h1>
-    <p class="para">
+    <p class="para{{dark?'-dark':''}}">
         {{data.info.about_para}}
     </p>
 
@@ -125,8 +125,8 @@
                     <mat-vertical-stepper color="warn" [linear]="false" #stepper>
                         <mat-step label="{{education.date_range}}" *ngFor="let education of data.eduction" [completed]="true" state="dot" [editable]="false">
                             <h2 style="font-weight: bold;" class="education-header">{{education.heading}}</h2>
-                            <p class="education-description">{{education.description}}</p>
-                            <div class="education-percentage">{{education.percentage}}</div>
+                            <p class="education-description{{dark?'-dark':''}}">{{education.description}}</p>
+                            <div class="education-percentage{{dark?'-dark':''}}">{{education.percentage}}</div>
                         </mat-step>
 
                         <ng-template matStepperIcon="dot">
@@ -157,7 +157,7 @@
                                 {{experience.designation}}
                             </h2>
                             <h4 class="experience-company">{{experience.company}}</h4>
-                            <div class="experience-description">
+                            <div class="experience-description{{dark?'-dark':''}}">
                                 <ul>
                                     <li *ngFor="let point of experience.description">
                                         {{point}}

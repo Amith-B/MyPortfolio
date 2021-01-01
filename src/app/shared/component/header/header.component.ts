@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PageheadingService } from 'src/app/services/pageheading.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,14 @@ export class HeaderComponent implements OnInit {
 
   @Output() sideBarEventTrigger:EventEmitter<any>=new EventEmitter();
 
-  toolbarHeading="Home";
+  //@Output() darkModeTrigger:EventEmitter<boolean>=new EventEmitter();
 
-  constructor(private pageHeadingService:PageheadingService) { }
+  toolbarHeading="Home";
+  dark=true;
+
+  constructor(
+    private pageHeadingService:PageheadingService,
+    private themeService: ThemeService) { }
 
   ngOnInit(): void {
     this.pageHeadingService.pageHeading.subscribe((heading)=>{
@@ -27,6 +33,12 @@ export class HeaderComponent implements OnInit {
 
   sideBarEvent(event){
     this.sideBarEventTrigger.emit();
+  }
+
+  handleChange(){
+    this.dark=!this.dark;
+    this.themeService.setDarkTheme(this.dark);
+    //this.darkModeTrigger.emit(this.dark);
   }
 
 }

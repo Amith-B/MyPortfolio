@@ -5,6 +5,7 @@ import { dataInterface } from 'src/app/services/portfolioinfo.service';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-contact',
@@ -18,7 +19,10 @@ export class ContactComponent implements OnInit, OnDestroy {
   submited=false;
   finished=false;
 
+  themeClass:string='bar-dark';
+
   profileSubscription:Subscription;
+  themeSubscription:Subscription;
 
   @ViewChild("f",{static:true})
   form:NgForm;
@@ -26,6 +30,7 @@ export class ContactComponent implements OnInit, OnDestroy {
   constructor(
     private portfolioinfoService:PortfolioinfoService, 
     private pageHeading: PageheadingService,
+    private themeService: ThemeService,
     private _snackBar: MatSnackBar) { }
   
 
@@ -36,11 +41,20 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.profileSubscription = this.portfolioinfoService.profileDataChangeEvent.subscribe((data)=>{
       this.data=data;
     });
+
+
+    this.themeClass = this.themeService.getTheme()?"bar-dark":"bar-light";
+
+    this.themeSubscription=this.themeService.darkThemeEvent
+        .subscribe((dark:boolean)=>{
+          this.themeClass = dark?"bar-dark":"bar-light";
+        });
   
   }
 
   ngOnDestroy(): void {
     this.profileSubscription.unsubscribe();
+    this.themeSubscription.unsubscribe();
   }
 
   submitForm(){

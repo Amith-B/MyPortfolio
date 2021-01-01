@@ -1,4 +1,5 @@
-$barColor: #f44336;
+$darkThemeColor: #f44336;
+$lightThemeColor: #ff6f00;
 
 .portfolio-contianer {
   padding-top: 50px;
@@ -12,20 +13,37 @@ $barColor: #f44336;
   }
 }
 
-.bar {
+.bar-dark {
   width: 100px;
-  &-large {
+  .bar-large {
     width: 100%;
     height: 10px;
-    background: $barColor;
+    background: $darkThemeColor;
     border-radius: 2px;
     margin-bottom: 10px;
   }
-  &-small {
+  .bar-small {
     width: 60%;
     height: 10px;
     border-radius: 2px;
-    background: $barColor;
+    background: $darkThemeColor;
+  }
+}
+
+.bar-light {
+  width: 100px;
+  .bar-large {
+    width: 100%;
+    height: 10px;
+    background: $lightThemeColor;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .bar-small {
+    width: 60%;
+    height: 10px;
+    border-radius: 2px;
+    background: $lightThemeColor;
   }
 }
 

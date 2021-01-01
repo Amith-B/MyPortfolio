@@ -4,6 +4,7 @@ import { PageheadingService } from 'src/app/services/pageheading.service';
 import { PortfolioinfoService } from './../../services/portfolioinfo.service';
 import { dataInterface } from './../../services/portfolioinfo.service';
 import { Subscription } from 'rxjs';
+import { ThemeService } from 'src/app/services/theme.service';
 
 
 @Component({
@@ -20,13 +21,21 @@ export class AboutComponent implements OnInit, OnDestroy {
   dob:Date;
   age:Number;
   data: dataInterface;
+  
+  themeClass:string='bar-dark';
+
 
   profileSubscription:Subscription;
+  themeSubscription:Subscription;
 
-  constructor(private portfolioinfoService:PortfolioinfoService,private pageHeading: PageheadingService) { }
+  constructor(
+    private portfolioinfoService:PortfolioinfoService,
+    private pageHeading: PageheadingService,
+    private themeService: ThemeService) { }
   
   ngOnDestroy(): void {
     this.profileSubscription.unsubscribe();
+    this.themeSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -37,6 +46,13 @@ export class AboutComponent implements OnInit, OnDestroy {
       this.dob=new Date(this.data.info.dob);
       this.age=this.calculate_age(this.dob);
     })
+
+    this.themeClass = this.themeService.getTheme()?"bar-dark":"bar-light";
+
+    this.themeSubscription=this.themeService.darkThemeEvent
+        .subscribe((dark:boolean)=>{
+          this.themeClass = dark?"bar-dark":"bar-light";
+        });
 
     this.data=<dataInterface>this.portfolioinfoService.getProfileInfo();
     this.dob=new Date(this.data.info.dob);

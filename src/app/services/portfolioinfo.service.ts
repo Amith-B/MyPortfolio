@@ -16,6 +16,7 @@ export interface dataInterface {
       line2:string
     },
     email:string,
+    profileURL:string,
     facebook:string,
     linkedin:string,
     github:string,
@@ -94,6 +95,7 @@ export class PortfolioinfoService {
           line2:"Bangalore, India"
         },
         email:"amithbr6@gmail.com",
+        profileURL:"https://firebasestorage.googleapis.com/v0/b/amith-portfolio.appspot.com/o/myImage.jpg?alt=media",
         facebook:"https://www.facebook.com/people/Amith-B-Sagar/100010365158923",
         linkedin:"https://linkedin.com/in/amith-b-sagar-18162a154/",
         github:"https://github.com/Amith-B",

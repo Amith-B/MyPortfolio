@@ -1,14 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
 import { PageheadingService } from 'src/app/services/pageheading.service';
 import { portfolioDataInterface, PortfolioinfoService } from 'src/app/services/portfolioinfo.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss']
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent implements OnInit, OnDestroy {
+
+  themeClass:string='bar-dark';
+  themeSubscription:Subscription;
+
 
   data:Array<portfolioDataInterface>=[];
   spin:Boolean=true;
@@ -16,7 +22,8 @@ export class PortfolioComponent implements OnInit {
   constructor(
     private portfolioinfoService: PortfolioinfoService,
     private pageHeading: PageheadingService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private themeService: ThemeService
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +45,19 @@ export class PortfolioComponent implements OnInit {
     else{
       this.spin=false;
     }
+
+
+    this.themeClass = this.themeService.getTheme()?"bar-dark":"bar-light";
+
+    this.themeSubscription=this.themeService.darkThemeEvent
+        .subscribe((dark:boolean)=>{
+          this.themeClass = dark?"bar-dark":"bar-light";
+        });
+
+  }
+
+  ngOnDestroy(): void {
+    this.themeSubscription.unsubscribe();
   }
 
 

@@ -3,6 +3,7 @@ $profileSize: 200px;
 img {
   height: $profileSize;
   height: $profileSize;
+  min-width: $profileSize;
   object-fit: cover;
   border-radius: 50%;
   border: 0.8em solid white;

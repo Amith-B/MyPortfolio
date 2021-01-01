@@ -3,6 +3,7 @@ import { PageheadingService } from './services/pageheading.service';
 import { portfolioDataInterface, PortfolioinfoService } from './services/portfolioinfo.service';
 import {MediaChange, MediaObserver} from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,17 @@ export class AppComponent implements OnInit, OnDestroy{
   sidebarToggle=true;
   mobileDevice=false;
 
+  darkTheme: boolean = true;
+  themeClass="dark";
+
   watcher: Subscription;
+  themeSubscription: Subscription;
+  profileSubscription: Subscription;
   activeMediaQuery = '';
 
   constructor(
     private portfolioinfoService:PortfolioinfoService,
+    private themeService:ThemeService,
     mediaObserver: MediaObserver){
 
     this.watcher = mediaObserver.media$.subscribe((change: MediaChange) => {
@@ -38,15 +45,23 @@ export class AppComponent implements OnInit, OnDestroy{
   }
   ngOnDestroy(): void {
     this.watcher.unsubscribe();
+    this.profileSubscription.unsubscribe();
+    this.themeSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
     
     console.log("getting profile details....")
-    this.portfolioinfoService.parseProfileInfo()
+    this.profileSubscription=this.portfolioinfoService.parseProfileInfo()
         .subscribe((data)=>{
           this.portfolioinfoService.setProfileInfo(data);
-        })
+        });
+
+    this.themeSubscription=this.themeService.darkThemeEvent
+        .subscribe((dark:boolean)=>{
+          this.darkTheme = dark;
+          this.themeClass = this.darkTheme?"dark":"light";
+        });
 
   }
   
@@ -54,5 +69,6 @@ export class AppComponent implements OnInit, OnDestroy{
   toggleSideBar(){
     this.sidebarToggle=!this.sidebarToggle
   }
+
 
 }

@@ -73,11 +73,14 @@ export class PortfolioinfoService {
 
   firebaseURL="https://amith-portfolio-default-rtdb.firebaseio.com"
 
-  myInfo:dataInterface=profileInfo.default;
+  myInfo:dataInterface=(profileInfo as any).default;
+  
+  portfolioData: Array<portfolioDataInterface> = (portfolioInfo as any).default;
 
-  portfolioData: Array<portfolioDataInterface> = portfolioInfo.default;
+  constructor(private http:HttpClient) { 
+    console.log('Data',this.myInfo)
 
-  constructor(private http:HttpClient) { }
+  }
 
   parseProfileInfo(){
    

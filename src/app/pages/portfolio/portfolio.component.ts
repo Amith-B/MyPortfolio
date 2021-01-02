@@ -12,8 +12,8 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class PortfolioComponent implements OnInit, OnDestroy {
 
-  themeClass:string='bar-dark';
   themeSubscription:Subscription;
+  dark:boolean=true;
 
 
   data:Array<portfolioDataInterface>=[];
@@ -46,12 +46,11 @@ export class PortfolioComponent implements OnInit, OnDestroy {
       this.spin=false;
     }
 
-
-    this.themeClass = this.themeService.getTheme()?"bar-dark":"bar-light";
+    this.dark=this.themeService.getTheme();
 
     this.themeSubscription=this.themeService.darkThemeEvent
         .subscribe((dark:boolean)=>{
-          this.themeClass = dark?"bar-dark":"bar-light";
+          this.dark=dark;
         });
 
   }

@@ -1,0 +1,84 @@
+{
+	"eduction": [
+		{
+			"date_range": "2010-2013",
+			"description": "Pragathi Composite School, Sagar",
+			"heading": "High School",
+			"percentage": "91.04%"
+		},
+		{
+			"date_range": "2013-2015",
+			"description": "Govt. Junior College, Sagar",
+			"heading": "Pre-University Course(PUC)",
+			"percentage": "81.5%"
+		},
+		{
+			"date_range": "2015-2019",
+			"description": "East West Institue Of Technology, Bangalore",
+			"heading": "Engineering in Computer Science",
+			"percentage": "7.69 CGPA"
+		}
+	],
+	"experience": [
+		{
+			"company": "Wipro Limited, Bangalore, Karnataka",
+			"date_range": "2019-Current",
+			"description": [
+				"Use REST APIs to automate the tasks using python",
+				"Building reusable python scripts which automates the repeated tasks",
+				"Developing web page for reports",
+				"Building Dashboard Webpages which uses REST APIs to get the metrics"
+			],
+			"designation": "Project Engineer"
+		}
+	],
+	"info": {
+		"about_heading": "I'm Amith B and a Web Developer",
+		"about_para": "Proficient Project Engineer with 1.5 years of experience and knowledge in web development and scripting. Interested in learning new technologies.",
+		"address": {
+			"line1": "Electronic City Phase 1",
+			"line2": "Bangalore, India"
+		},
+		"city": "Bangalore",
+		"degree": "B.E",
+		"dept": "Computer Science",
+		"dob": "1997-04-15T18:30:00.000Z",
+		"email": "amithbr6@gmail.com",
+		"facebook": "https://www.facebook.com/people/Amith-B-Sagar/100010365158923",
+		"github": "https://github.com/Amith-B",
+		"linkedin": "https://linkedin.com/in/amith-b-sagar-18162a154/",
+		"passout": "2019",
+		"phone": "+91 9742753491",
+		"profileURL": "https://firebasestorage.googleapis.com/v0/b/amith-portfolio.appspot.com/o/myImage.jpg?alt=media"
+	},
+	"knowledge": [
+		{
+			"name": "Angular",
+			"percentage": 90
+		},
+		{
+			"name": "React",
+			"percentage": 80
+		},
+		{
+			"name": "Java",
+			"percentage": 60
+		},
+		{
+			"name": "NodeJs",
+			"percentage": 75
+		},
+		{
+			"name": "Django",
+			"percentage": 65
+		},
+		{
+			"name": "Python",
+			"percentage": 70
+		},
+		{
+			"name": "Boostrap",
+			"percentage": 70
+		}
+	]
+}

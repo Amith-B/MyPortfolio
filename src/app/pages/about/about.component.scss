@@ -72,36 +72,9 @@ $paraLightThemeColor: darken(white, 60%);
   color: $paraDarkThemeColor;
 }
 
-.bar-dark {
-  width: 100px;
-  .bar-large {
-    width: 100%;
-    height: 10px;
-    background: $darkThemeColor;
-    border-radius: 2px;
-    margin-bottom: 10px;
-  }
-  .bar-small {
-    width: 60%;
-    height: 10px;
-    border-radius: 2px;
-    background: $darkThemeColor;
-  }
-}
-
-.bar-light {
-  width: 100px;
-  .bar-large {
-    width: 100%;
-    height: 10px;
-    background: $lightThemeColor;
-    border-radius: 2px;
-    margin-bottom: 10px;
-  }
-  .bar-small {
-    width: 60%;
-    height: 10px;
-    border-radius: 2px;
-    background: $lightThemeColor;
+.experience {
+  ul {
+    margin-left: 10px;
+    padding-left: 10px;
   }
 }

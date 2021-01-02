@@ -1,0 +1,15 @@
+$darkThemeBackground: #e91e6283;
+$lightThemeBackground: #ffb30085;
+
+.container-background {
+  width: 100%;
+  box-shadow: 0px 0px 0px 150px $lightThemeBackground;
+  &-dark {
+    box-shadow: 0px 0px 0px 150px $darkThemeBackground;
+  }
+}
+
+.darkshade {
+  width: 100%;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.493);
+}

@@ -1,13 +1,11 @@
+<app-headerbackground [dark]="dark"></app-headerbackground>
 <div class="container about-contianer">
     <h1 class="title">About Me</h1>
-    <div class="{{themeClass}}">
-        <div class="bar-large"></div>
-        <div class="bar-small"></div>
-    </div>
+    <app-underline [dark]="dark"></app-underline>
     <br>
     <br>
 
-    <h1>I'm Amith B and a Web Developer</h1>
+    <h1>{{data.info.about_heading}}</h1>
     <p class="para{{dark?'-dark':''}}">
         {{data.info.about_para}}
     </p>
@@ -120,7 +118,7 @@
             <h1 style="font-weight: bold;">
                 Education
             </h1> 
-            <mat-card>
+            <mat-card class="ml-0 mr-0 pl-0 pr-0">
                 <div>
                     <mat-vertical-stepper color="warn" [linear]="false" #stepper>
                         <mat-step label="{{education.date_range}}" *ngFor="let education of data.eduction" [completed]="true" state="dot" [editable]="false">
@@ -149,7 +147,7 @@
             <h1 style="font-weight: bold;">
                 Experience
             </h1>
-            <mat-card>
+            <mat-card class="ml-0 mr-0 pl-0 pr-0">
                 <div>
                     <mat-vertical-stepper color="warn" [linear]="false" #stepper>
                         <mat-step label="{{experience.date_range}}" *ngFor="let experience of data.experience" [completed]="true" state="dot" [editable]="false">

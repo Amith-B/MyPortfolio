@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-
+import * as profileInfo from './../../assets/profileInfo.json';
+import * as portfolioInfo from './../../assets/portfolioInfo.json';
 
 export interface dataInterface {
   info: {
@@ -10,6 +11,7 @@ export interface dataInterface {
     city:string,
     phone:string,
     passout:string,
+    about_heading:string,
     about_para:string,
     address:{
       line1:string,
@@ -71,100 +73,14 @@ export class PortfolioinfoService {
 
   firebaseURL="https://amith-portfolio-default-rtdb.firebaseio.com"
 
-  myInfo={};
+  myInfo:dataInterface=profileInfo.default;
 
-  portfolioData: Array<portfolioDataInterface> =[];
+  portfolioData: Array<portfolioDataInterface> = portfolioInfo.default;
 
   constructor(private http:HttpClient) { }
 
   parseProfileInfo(){
-    this.myInfo={
-      info: {
-        dob: "1997-04-15T18:30:00.000Z",
-        degree:"B.E",
-        dept:"Computer Science",
-        city:"Bangalore",
-        phone:"+91 9742753491",
-        passout:"2019",
-        about_para:`
-          Proficient Project Engineer with 1.5 years of experience and knowledge in web
-          development and scripting. Interested in learning new technologies.
-        `,
-        address:{
-          line1:"Electronic City Phase 1",
-          line2:"Bangalore, India"
-        },
-        email:"amithbr6@gmail.com",
-        profileURL:"https://firebasestorage.googleapis.com/v0/b/amith-portfolio.appspot.com/o/myImage.jpg?alt=media",
-        facebook:"https://www.facebook.com/people/Amith-B-Sagar/100010365158923",
-        linkedin:"https://linkedin.com/in/amith-b-sagar-18162a154/",
-        github:"https://github.com/Amith-B",
-      },
-      eduction:[
-        {
-          date_range:"2010-2013",
-          heading:"High School",
-          description:"Pragathi Composite School, Sagar",
-          percentage:"91.04%"
-        },
-        {
-          date_range:"2013-2015",
-          heading:"Pre-University Course(PUC)",
-          description:"Govt. Junior College, Sagar",
-          percentage:"81.5%"
-        },
-        {
-          date_range:"2015-2019",
-          heading:"Engineering in Computer Science",
-          description:"East West Institue Of Technology, Bangalore",
-          percentage:"7.69 CGPA"
-        }
-      ],
-      experience:[
-        {
-          date_range:"2019-Current",
-          designation:"Project Engineer",
-          company:"Wipro Limited, Bangalore, Karnataka",
-          description: [
-            "Use REST APIs to automate the tasks using python",
-            "Building reusable python scripts which automates the repeated tasks",
-            "Developing web page for reports",
-            "Building Dashboard Webpages which uses REST APIs to get the metrics",
-          ],
-        }
-      ],
-      knowledge:[
-        {
-          name:"Angular",
-          percentage: 90
-        },
-        {
-          name:"React",
-          percentage: 80
-        },
-        {
-          name:"Java",
-          percentage: 60
-        },
-        {
-          name:"NodeJs",
-          percentage: 75
-        },
-        {
-          name:"Django",
-          percentage: 65
-        },
-        {
-          name:"Python",
-          percentage: 70
-        },
-        {
-          name:"Boostrap",
-          percentage: 70
-        }
-      ]
-    }
-
+   
     return this.http
             .get<dataInterface>(
                 `${this.firebaseURL}/profile.json`,

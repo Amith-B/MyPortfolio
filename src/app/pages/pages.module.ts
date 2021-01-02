@@ -17,13 +17,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
+import { HeaderbackgroundComponent } from '../shared/component/headerbackground/headerbackground.component';
+import { UnderlineComponent } from '../shared/component/underline/underline.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     AboutComponent,
     PortfolioComponent,
-    ContactComponent
+    ContactComponent,
+    HeaderbackgroundComponent,
+    UnderlineComponent,
   ],
   imports: [
     CommonModule,

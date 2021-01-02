@@ -15,11 +15,10 @@ import { ThemeService } from 'src/app/services/theme.service';
 export class ContactComponent implements OnInit, OnDestroy {
 
   data:dataInterface;
+  dark:boolean=true;
 
   submited=false;
   finished=false;
-
-  themeClass:string='bar-dark';
 
   profileSubscription:Subscription;
   themeSubscription:Subscription;
@@ -42,12 +41,11 @@ export class ContactComponent implements OnInit, OnDestroy {
       this.data=data;
     });
 
-
-    this.themeClass = this.themeService.getTheme()?"bar-dark":"bar-light";
+    this.dark=this.themeService.getTheme();
 
     this.themeSubscription=this.themeService.darkThemeEvent
         .subscribe((dark:boolean)=>{
-          this.themeClass = dark?"bar-dark":"bar-light";
+          this.dark=dark;
         });
   
   }

@@ -44,7 +44,7 @@
 		"dept": "Computer Science",
 		"dob": "1997-04-15T18:30:00.000Z",
 		"email": "amithbr6@gmail.com",
-		"facebook": "https://www.facebook.com/people/Amith-B-Sagar/100010365158923",
+		"facebook": "https://www.facebook.com/profile.php?id=100010365158923",
 		"github": "https://github.com/Amith-B",
 		"linkedin": "https://linkedin.com/in/amith-b-sagar-18162a154/",
 		"passout": "2019",
@@ -78,6 +78,18 @@
 		},
 		{
 			"name": "Boostrap",
+			"percentage": 65
+		},
+		{
+			"name": "SCSS",
+			"percentage": 40
+		},
+		{
+			"name": "CSS",
+			"percentage": 65
+		},
+		{
+			"name": "HTML",
 			"percentage": 70
 		}
 	]

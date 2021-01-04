@@ -11,9 +11,13 @@ export class ThemeService {
 
   constructor() { 
     try {
-      this.dark=JSON.parse(localStorage.getItem('dark'));
+
+      let localDark=JSON.parse(localStorage.getItem('dark'));
+      if(localDark!==null){
+        this.dark=localDark;
+      }
+
     } catch (error) {
-      this.dark=true;
       console.log('Unable to retrieve data local storage');
     }
   }

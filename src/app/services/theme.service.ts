@@ -6,17 +6,29 @@ import { Subject } from 'rxjs';
 })
 export class ThemeService {
 
-  darkThemeEvent:Subject<boolean>=new Subject();
-  dark:boolean=true;
+  darkThemeEvent: Subject<boolean> = new Subject();
+  dark: boolean = true;
 
-  constructor() { }
-
-  setDarkTheme(dark:boolean){
-    this.dark=dark;
-    this.darkThemeEvent.next(dark);
+  constructor() { 
+    try {
+      this.dark=JSON.parse(localStorage.getItem('dark'));
+    } catch (error) {
+      this.dark=true;
+      console.log('Unable to retrieve data local storage');
+    }
   }
 
-  getTheme(){
+  setDarkTheme(dark: boolean) {
+    this.dark = dark;
+    this.darkThemeEvent.next(dark);
+    try {
+      localStorage.setItem('dark',JSON.stringify(this.dark));
+    } catch (error) {
+      console.log('Unable to write to local storage');
+    }
+  }
+
+  getTheme() {
     return this.dark;
   }
 }

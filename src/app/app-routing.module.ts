@@ -13,31 +13,19 @@ const routes: Routes = [
   },
   {
     path: "home",
-    component: HomeComponent,
-    data: {
-      pageHeading:"Home"
-    }
+    component: HomeComponent
   },
   {
     path: "about",
-    component: AboutComponent,
-    data: {
-      pageHeading:"About Me"
-    }
+    component: AboutComponent
   },
   {
     path: "portfolio",
-    component: PortfolioComponent,
-    data: {
-      pageHeading:"Portfolio"
-    }
+    component: PortfolioComponent
   },
   {
     path: "contact",
-    component: ContactComponent,
-    data: {
-      pageHeading:"Contact"
-    }
+    component: ContactComponent
   }
 ];
 

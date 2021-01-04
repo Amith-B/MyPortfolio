@@ -11,8 +11,6 @@ export class HeaderComponent implements OnInit {
 
   @Output() sideBarEventTrigger:EventEmitter<any>=new EventEmitter();
 
-  //@Output() darkModeTrigger:EventEmitter<boolean>=new EventEmitter();
-
   toolbarHeading="Home";
   dark=true;
 
@@ -21,6 +19,8 @@ export class HeaderComponent implements OnInit {
     private themeService: ThemeService) { }
 
   ngOnInit(): void {
+    this.dark=this.themeService.getTheme();
+
     this.pageHeadingService.pageHeading.subscribe((heading)=>{
       this.toolbarHeading=heading;
       console.log(heading);
@@ -38,7 +38,6 @@ export class HeaderComponent implements OnInit {
   handleChange(){
     this.dark=!this.dark;
     this.themeService.setDarkTheme(this.dark);
-    //this.darkModeTrigger.emit(this.dark);
   }
 
 }

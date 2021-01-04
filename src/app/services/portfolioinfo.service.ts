@@ -78,7 +78,6 @@ export class PortfolioinfoService {
   portfolioData: Array<portfolioDataInterface> = (portfolioInfo as any).default;
 
   constructor(private http:HttpClient) { 
-    console.log('Data',this.myInfo)
 
   }
 

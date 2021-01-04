@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { PageheadingService } from 'src/app/services/pageheading.service';
 import { PortfolioinfoService } from './../../services/portfolioinfo.service';
 import { dataInterface } from './../../services/portfolioinfo.service';

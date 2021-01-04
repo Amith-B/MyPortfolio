@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { PageheadingService } from './services/pageheading.service';
-import { portfolioDataInterface, PortfolioinfoService } from './services/portfolioinfo.service';
-import {MediaChange, MediaObserver} from '@angular/flex-layout';
+import { PortfolioinfoService } from './services/portfolioinfo.service';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { ThemeService } from './services/theme.service';
 
@@ -52,6 +51,11 @@ export class AppComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     
     console.log("getting profile details....")
+
+    this.darkTheme=this.themeService.getTheme();
+    this.themeClass = this.darkTheme?"dark":"light";
+
+
     this.profileSubscription=this.portfolioinfoService.parseProfileInfo()
         .subscribe((data)=>{
           this.portfolioinfoService.setProfileInfo(data);

@@ -1,5 +1,8 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { PortfolioinfoService } from 'src/app/services/portfolioinfo.service';
+import * as settings from './../../assets/settings.json';
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +10,21 @@ import { Subject } from 'rxjs';
 export class ThemeService {
 
   darkThemeEvent: Subject<boolean> = new Subject();
-  dark: boolean = true;
+  dark: boolean =  (settings as any).default.darkTheme;
 
-  constructor() { 
+  constructor(private portfolioinfoService:PortfolioinfoService) { 
     try {
 
       let localDark=JSON.parse(localStorage.getItem('dark'));
       if(localDark!==null){
+        //set as revisited user
         this.dark=localDark;
+        this.portfolioinfoService.setAsRevisitedUser();
+      }
+      else{
+        //set this user as unique user
+        this.portfolioinfoService.setAsUniqueUser();
+        this.setDarkTheme(this.dark);
       }
 
     } catch (error) {

@@ -10,6 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatButtonModule,
     MatListModule,
     MatMenuModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    FlexLayoutModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatCardModule,
   ],
   exports: [
     HeaderComponent,

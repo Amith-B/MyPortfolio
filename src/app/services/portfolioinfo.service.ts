@@ -64,18 +64,27 @@ export interface messageInterface {
   message: string;
 }
 
+export interface visitCountInterface {
+  newvisit:number;
+  revisit:number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class PortfolioinfoService {
   
   profileDataChangeEvent:EventEmitter<dataInterface>=new EventEmitter();
+  visitCount:EventEmitter<visitCountInterface>=new EventEmitter();
 
   firebaseURL="https://amith-portfolio-default-rtdb.firebaseio.com"
 
   myInfo:dataInterface=(profileInfo as any).default;
   
   portfolioData: Array<portfolioDataInterface> = (portfolioInfo as any).default;
+
+  newvisit=0;
+  revisit=0;
 
   constructor(private http:HttpClient) { 
 
@@ -125,6 +134,62 @@ export class PortfolioinfoService {
         `${this.firebaseURL}/messages.json`,
         data
       );
+  }
+
+  private fetchCounter(path:string){
+    return this.http.get(
+      `${this.firebaseURL}/${path}.json`
+    );
+  }
+
+  private incrementCounter(counter:number,path:string){
+    this.http.put(
+      `${this.firebaseURL}/${path}.json`,
+      {counter:counter+1}
+    ).subscribe((data)=>{
+      console.log('Counter increment successfull');
+      this[path]+=1;
+
+      this.getVisit();
+
+    },(error)=>{
+      console.log('Unable to increment counter right now');
+      this.getVisit();
+    })
+  }
+
+  setAsUniqueUser(){
+    console.log('New user')
+    this.fetchCounter('newvisit').subscribe((data:{counter:number})=>{
+      this.newvisit=data.counter;
+      this.incrementCounter(this.newvisit,'newvisit');
+    })
+  }
+
+  setAsRevisitedUser(){
+    console.log('Previously visited user, welcome back')
+    this.fetchCounter('revisit').subscribe((data:{counter:number})=>{
+      this.revisit=data.counter;
+      this.incrementCounter(this.revisit,'revisit');
+    })
+  }
+
+  getVisit(){
+    this.fetchCounter('newvisit').subscribe((data:{counter:number})=>{
+      this.newvisit=data.counter;
+
+      this.fetchCounter('revisit').subscribe((data:{counter:number})=>{
+        this.revisit=data.counter;
+
+        this.visitCount.emit(
+          {
+            newvisit: this.newvisit,
+            revisit: this.revisit
+          }
+        )
+      })
+
+    });
   }
 
 }

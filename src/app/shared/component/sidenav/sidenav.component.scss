@@ -1,14 +1,6 @@
-$profileSize: 8em;
-
 .profile-card {
   text-align: center;
   padding: 20px;
-  img {
-    height: $profileSize;
-    height: $profileSize;
-    object-fit: cover;
-    border-radius: 50%;
-  }
 }
 .name {
   padding-top: 15px;
@@ -19,4 +11,64 @@ $profileSize: 8em;
 }
 .progress {
   height: 8px;
+}
+
+.floatIcon {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border: 6px solid transparent;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #303030;
+}
+.floatIcon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 35%;
+  width: 300px;
+  height: 300px;
+
+  transform: translate(-50px, 100px);
+  background: radial-gradient(#1c2492, #53a3e4, #00f891);
+  animation: animatewater 4s linear infinite;
+}
+
+.content {
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-size: 95px;
+  font-weight: bold;
+  animation: animatetext 1s linear infinite;
+}
+
+@keyframes animatetext {
+  0% {
+    transform: translateY(60px) rotate(0deg);
+    transform-origin: center;
+  }
+  33% {
+    transform: translateY(40px) rotate(10deg);
+    transform-origin: 35% 50%;
+  }
+  75% {
+    transform: translateY(60px) rotate(-10deg);
+    transform-origin: center;
+  }
+  100% {
+    transform: translateY(60px) rotate(0deg);
+    transform-origin: center;
+  }
+}
+
+@keyframes animatewater {
+  0% {
+    transform: translate(-50px, 90px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50px, 90px) rotate(360deg);
+  }
 }

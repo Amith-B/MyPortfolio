@@ -1,5 +1,6 @@
 $profileSize: 200px;
 $headercolor: #6d6d6d3b;
+$bezier: cubic-bezier(0.61, 0.18, 0, 2.6);
 
 img {
   height: $profileSize;
@@ -10,6 +11,7 @@ img {
   border: 10px solid transparent;
   background-image: linear-gradient(to bottom right, #1c2492, #53a3e4, #00f891);
   background-size: 210px 210px;
+  box-shadow: 0px 0px 10px black, 0px 0px 20px black, 0px 0px 30px black;
   background-position: -10px -10px;
 }
 
@@ -19,15 +21,40 @@ h1 {
   font-size: 50px;
   font-family: Arial, Helvetica, sans-serif;
   min-width: 260px;
-  animation: slideLeft 1.5s cubic-bezier(0.21, -0.79, 0.6, 1.93);
+
+  background: linear-gradient(
+    to top right,
+    black 30%,
+    rgb(0, 195, 255) 70%,
+    black 90%
+  );
+  background-size: contain;
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: $headercolor;
+
+  animation: slideLeft 1.5s cubic-bezier(0.21, -0.79, 0.6, 1.93),
+    animateh 10s linear infinite;
 }
 h2 {
   min-width: 200px;
-  animation: slideRight 1.5s cubic-bezier(0.21, -0.79, 0.6, 1.93) forwards;
+
+  background: linear-gradient(to right, transparent 30%, #ff9900 50%);
+  background-size: contain;
+  background-size: 100% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+
+  animation: slideRight 1.5s cubic-bezier(0.21, -0.79, 0.6, 1.93) forwards,
+    animateh 12s linear infinite;
 }
 
 .main {
   text-align: center;
+  overflow: hidden;
+  position: relative;
 }
 
 @keyframes slideRight {
@@ -52,21 +79,67 @@ h2 {
   }
 }
 
-h1 {
-  // background: url("../../../assets/textbg.jpg");
-  background: url("../../../assets/textbg1.gif");
-  background-size: contain;
-  background-size: 100% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: $headercolor;
+@keyframes animateh {
+  from {
+    background-position: 0px 0px;
+  }
+  to {
+    background-position: 1000px -1000px;
+  }
 }
 
-h2 {
-  background: url("../../../assets/textbg2.gif");
-  background-size: contain;
-  background-size: 100% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: $headercolor;
+.main::before {
+  content: "";
+  position: absolute;
+  top: -20vw;
+  left: -20vw;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  background: radial-gradient(#3b8ad9, black);
+  box-shadow: 0px 0px 10px black, 0px 0px 20px black, 0px 0px 30px black;
+  animation: animate1 2s $bezier forwards;
+}
+
+.main::after {
+  content: "";
+  position: absolute;
+  right: -20vw;
+  bottom: -20vw;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  background: radial-gradient(#fe015f, black);
+  box-shadow: 0px 0px 10px black, 0px 0px 20px black, 0px 0px 30px black;
+  animation: animate2 2s $bezier forwards;
+}
+
+@keyframes animate1 {
+  0% {
+    top: 0vw;
+    left: 0vw;
+    width: 0vw;
+    height: 0vw;
+  }
+  100% {
+    top: -20vw;
+    left: -20vw;
+    width: 40vw;
+    height: 40vw;
+  }
+}
+
+@keyframes animate2 {
+  0% {
+    right: 0vw;
+    bottom: 0vw;
+    width: 0vw;
+    height: 0vw;
+  }
+  100% {
+    right: -20vw;
+    bottom: -20vw;
+    width: 40vw;
+    height: 40vw;
+  }
 }

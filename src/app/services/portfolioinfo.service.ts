@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import * as profileInfo from './../../assets/profileInfo.json';
 import * as portfolioInfo from './../../assets/portfolioInfo.json';
+import { environment } from './../../environments/environment';
 
 export interface dataInterface {
   info: {
@@ -74,7 +75,7 @@ export class PortfolioinfoService {
   profileDataChangeEvent: EventEmitter<dataInterface> = new EventEmitter();
   visitCount: EventEmitter<visitCountInterface> = new EventEmitter();
 
-  firebaseURL = 'https://amith-portfolio-default-rtdb.firebaseio.com';
+  firebaseURL = environment.firebaseURL;
 
   myInfo: dataInterface = (profileInfo as any).default;
 

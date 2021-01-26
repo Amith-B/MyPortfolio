@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { PortfolioinfoService, dataInterface, visitCountInterface } from 'src/app/services/portfolioinfo.service';
 import * as settings from './../../../../assets/settings.json';
+import { AdminService } from './../../../services/adminService.service';
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss']
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent implements OnInit, OnDestroy {
 
   data:dataInterface;
   visit:visitCountInterface={
@@ -18,11 +20,16 @@ export class SidenavComponent implements OnInit {
   reVisitPercentage=0;
   total=0;
 
+  admin=false;
+
+  adminSubscription:Subscription;
+
   showVisitCard=false;
   showVisitCardSettings:{showVisitCard:boolean}=(settings as any).default;
 
 
-  constructor(private portfolioinfoService:PortfolioinfoService) { }
+  constructor(private portfolioinfoService:PortfolioinfoService,
+    private adminService:AdminService) { }
 
   ngOnInit(): void {
     this.data=<dataInterface>this.portfolioinfoService.getProfileInfo();
@@ -37,6 +44,15 @@ export class SidenavComponent implements OnInit {
       })
     }
 
+
+    this.adminSubscription=this.adminService.admin.subscribe((data)=>{
+      this.admin=data;
+    })
+
+  }
+
+  ngOnDestroy(){
+    this.adminSubscription.unsubscribe();
   }
 
 }

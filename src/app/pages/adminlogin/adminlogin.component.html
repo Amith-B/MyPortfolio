@@ -1,0 +1,50 @@
+<app-headerbackground [dark]="dark"></app-headerbackground>
+<div class="container admin-login-contianer">
+    <h1 class="title">Admin Login</h1>
+    <app-underline [dark]="dark"></app-underline>
+    <br>
+    <br>
+
+    <div *ngIf="loading" fxFlexFill fxLayoutAlign="center center">
+        <mat-progress-bar color="warn" mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="submitForm()">
+        <div fxLayout="column">
+
+          <mat-form-field fxFlex="60" appearance="outline" color="accent">
+            <mat-label>Email</mat-label>
+            <input 
+              type="email"
+              email
+              matInput 
+              ngModel
+              required 
+              #email="ngModel"
+              name="email"
+              placeholder="Enter your mail id">
+            <mat-icon matPrefix>email</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="100" appearance="outline" color="accent">
+            <mat-label>Password</mat-label>
+            <input 
+              ngModel
+              type="password"
+              #password="ngModel"
+              name="password"
+              matInput 
+              password
+              required 
+              placeholder="Enter admin password">
+            <mat-icon matPrefix>password</mat-icon>
+          </mat-form-field>
+
+          <div fxLayout="row" fxLayoutAlign="end none">
+            <button [disabled]="!f.valid && f.touched" mat-raised-button color="warn" type="submit">Submit</button>
+          </div>
+        
+        </div>
+    </form>
+
+</div>

@@ -17,8 +17,7 @@ export class ContactComponent implements OnInit, OnDestroy {
   data:dataInterface;
   dark:boolean=true;
 
-  submited=false;
-  finished=false;
+  loading=false;
 
   profileSubscription:Subscription;
   themeSubscription:Subscription;
@@ -58,11 +57,11 @@ export class ContactComponent implements OnInit, OnDestroy {
   submitForm(){
     if(this.form.valid){
       console.log(this.form.value)
-      this.submited=true;
+      this.loading=true;
       this.portfolioinfoService.pushMessages(<messageInterface>this.form.value)
         .subscribe((data)=>{
           console.log(data);
-          this.finished=true;
+          this.loading=false;
 
           this.openSnackBar(
             "Successfully posted your message to Amith",
@@ -74,7 +73,7 @@ export class ContactComponent implements OnInit, OnDestroy {
         },
         (error)=>{
           console.log(error);
-          this.finished=true;
+          this.loading=false;
 
           this.openSnackBar("Unable to post your message right now","OK")
         })

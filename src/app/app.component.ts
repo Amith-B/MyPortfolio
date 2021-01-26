@@ -3,6 +3,7 @@ import { PortfolioinfoService } from './services/portfolioinfo.service';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { ThemeService } from './services/theme.service';
+import { AdminService } from './services/adminService.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ export class AppComponent implements OnInit, OnDestroy{
   constructor(
     private portfolioinfoService:PortfolioinfoService,
     private themeService:ThemeService,
-    mediaObserver: MediaObserver){
+    mediaObserver: MediaObserver,
+    private adminService: AdminService){
 
     this.watcher = mediaObserver.media$.subscribe((change: MediaChange) => {
       this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';
@@ -54,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
     this.darkTheme=this.themeService.getTheme();
     this.themeClass = this.darkTheme?"dark":"light";
-
+    this.adminService.autoLogin();
 
     this.profileSubscription=this.portfolioinfoService.parseProfileInfo()
         .subscribe((data)=>{

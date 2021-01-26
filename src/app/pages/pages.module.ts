@@ -19,6 +19,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { HeaderbackgroundComponent } from '../shared/component/headerbackground/headerbackground.component';
 import { UnderlineComponent } from '../shared/component/underline/underline.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,8 @@ import { UnderlineComponent } from '../shared/component/underline/underline.comp
     ContactComponent,
     HeaderbackgroundComponent,
     UnderlineComponent,
+    AdminloginComponent,
+    AdmindashboardComponent,
   ],
   imports: [
     CommonModule,
@@ -43,13 +49,17 @@ import { UnderlineComponent } from '../shared/component/underline/underline.comp
     MatButtonModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
+    MatExpansionModule,
     FormsModule
   ],
   exports: [
     HomeComponent,
     AboutComponent,
     PortfolioComponent,
-    ContactComponent
+    ContactComponent,
+    AdminloginComponent,
+    AdmindashboardComponent,
   ]
 })
 export class PagesModule { }

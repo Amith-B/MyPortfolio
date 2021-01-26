@@ -12,7 +12,8 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <mat-slide-toggle [checked]="dark" (change)="handleChange()" color="primary">{{dark?'Dark Mode':'Light Mode'}}</mat-slide-toggle>
+        <mat-slide-toggle [checked]="dark" (change)="handleChange()" color="primary">{{dark?'Dark Mode':'Light Mode'}}</mat-slide-toggle>
+        <mat-slide-toggle [checked]="admin" (change)="handleAdminChange($event)" color="primary">Admin Mode({{admin?'enabled':'disabled'}})</mat-slide-toggle>
     </mat-menu>
 
   </mat-toolbar>

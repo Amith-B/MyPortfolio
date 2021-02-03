@@ -1,10 +1,6 @@
-<app-headerbackground [dark]="dark"></app-headerbackground>
+<app-headerbackground [dark]="dark" pageTitle="Admin Login"></app-headerbackground>
 <div class="container admin-login-contianer">
-    <h1 class="title">Admin Login</h1>
-    <app-underline [dark]="dark"></app-underline>
-    <br>
-    <br>
-
+  
     <div *ngIf="loading" fxFlexFill fxLayoutAlign="center center">
         <mat-progress-bar color="warn" mode="indeterminate"></mat-progress-bar>
     </div>

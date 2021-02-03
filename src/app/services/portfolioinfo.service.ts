@@ -127,20 +127,30 @@ export class PortfolioinfoService {
   }
 
   private incrementCounter(counter: number, path: string) {
-    this.http
-      .put(`${this.firebaseURL}/${path}.json`, { counter: counter + 1 })
-      .subscribe(
-        (data) => {
-          console.log('Counter increment successfull');
-          this[path] += 1;
+    let loginData:{
+      idToken:string,
+      expirationDate:string,
+      refreshToken:string
+    }=JSON.parse(localStorage.getItem('loginData'));
 
-          this.getVisit();
-        },
-        (error) => {
-          console.log('Unable to increment counter right now');
-          this.getVisit();
-        }
-      );
+    if(!loginData){
+      this.http
+        .put(`${this.firebaseURL}/${path}.json`, { counter: counter + 1 })
+        .subscribe(
+          (data) => {
+            console.log('Counter increment successfull');
+            this[path] += 1;
+            this.getVisit();
+          },
+          (error) => {
+            console.log('Unable to increment counter right now');
+            this.getVisit();
+          }
+        );
+    }
+    else{
+      this.getVisit();
+    }
   }
 
   setAsUniqueUser() {

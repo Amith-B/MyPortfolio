@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   firebaseURL: "default",
   loginURL: "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword",
+  refreshTokenURL: "https://securetoken.googleapis.com/v1/token",
   key:""
 };
 

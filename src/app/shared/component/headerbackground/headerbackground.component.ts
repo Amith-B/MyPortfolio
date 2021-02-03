@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeaderbackgroundComponent implements OnInit {
 
   @Input() dark:boolean; 
+  @Input() pageTitle:string;
 
   constructor() { }
 

@@ -1,10 +1,6 @@
-<app-headerbackground [dark]="dark"></app-headerbackground>
+<app-headerbackground [dark]="dark" pageTitle="About Me"></app-headerbackground>
 <div class="container about-contianer">
-    <h1 class="title">About <span>Me</span></h1>
-    <app-underline [dark]="dark"></app-underline>
-    <br>
-    <br>
-
+    
     <h1>{{data.info.about_heading}}</h1>
     <p class="para{{dark?'-dark':''}}">
         {{data.info.about_para}}

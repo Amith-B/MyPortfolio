@@ -1,2 +1,9 @@
-<div class="darkshade"></div>
-<div class="container-background{{dark?'-dark':''}}"></div>
+<div class="container-background{{dark?'-dark':''}}">
+    <div class="darkshade"></div>
+
+    <div class="container">
+        <h1 class="title">{{pageTitle}}</h1>
+        <app-underline [dark]="dark"></app-underline>
+    </div>
+    
+</div>

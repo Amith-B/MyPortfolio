@@ -16,6 +16,15 @@ export interface AuthResponseData{
   registered?:boolean;
 }
 
+export interface RefreshTokenAuthResponseData{
+  access_token:string;
+  token_type:string;
+  refresh_token:string;
+  id_token:string;
+  expires_in:string;
+  user_id:string;
+  project_id?:boolean;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +34,7 @@ export class AdminService {
   private tokenExpirationTimer:any;
   admin: BehaviorSubject<boolean>= new BehaviorSubject(false);
   loginURL:string=`${environment.loginURL}?key=${environment.key}`;
+  refreshTokenURL:string=`${environment.refreshTokenURL}?key=${environment.key}`;
 
   firebaseURL:string=environment.firebaseURL;
 
@@ -47,7 +57,8 @@ export class AdminService {
         tap(resData=>{
             this.handleAuthentication(
               resData.idToken,
-              +resData.expiresIn
+              +resData.expiresIn,
+              resData.refreshToken
             )
         })
       );
@@ -55,19 +66,21 @@ export class AdminService {
 
   private handleAuthentication(
     idToken:string,
-    expiresIn:number)
+    expiresIn:number,
+    refreshToken:string)
   {
     const expirationDate=new Date(new Date().getTime()+expiresIn*1000);
    
     this.autoLogout(expiresIn*1000);
-    localStorage.setItem('loginData',JSON.stringify({idToken,expirationDate}));
+    localStorage.setItem('loginData',JSON.stringify({idToken,expirationDate,refreshToken}));
     this.token=idToken;
   }
 
   autoLogin(){
     const loginData:{
-      idToken:string;
-      expirationDate:string;
+      idToken:string,
+      expirationDate:string,
+      refreshToken:string
     }=JSON.parse(localStorage.getItem('loginData'));
     if(!loginData)
         return;
@@ -82,11 +95,11 @@ export class AdminService {
 
         this.autoLogout(expirationDuration);
     }   
-}
+  }
 
   autoLogout(expirationDuration:number){
     this.tokenExpirationTimer=setTimeout(()=>{
-        this.adminLogout();
+        this.getRefreshedToken();
     },expirationDuration);
   }
 
@@ -97,6 +110,52 @@ export class AdminService {
     }
     this.admin.next(false)
     this.route.navigate(["home"]);
+  }
+
+  getRefreshedToken(){
+
+    if(this.tokenExpirationTimer){
+      clearTimeout(this.tokenExpirationTimer);
+    }
+
+    const loginData:{
+      idToken:string,
+      expirationDate:string,
+      refreshToken:string
+    }=JSON.parse(localStorage.getItem('loginData'));
+
+    if(!loginData){
+      return;
+    }
+
+    if(loginData.refreshToken){
+      this.http.post<RefreshTokenAuthResponseData>(
+        this.refreshTokenURL,
+        {
+            grant_type: "refresh_token",
+            refresh_token: loginData.refreshToken
+        }
+      ).subscribe(resData=>
+        {
+          this.handleAuthentication(
+            resData.id_token,
+            +resData.expires_in,
+            resData.refresh_token
+          );
+          this.admin.next(true);
+
+        },
+        error=>{
+          this.admin.next(false)
+          this.route.navigate(["home"]);
+          localStorage.removeItem('loginData');
+        }
+      )
+    }
+    else{
+      localStorage.removeItem('loginData');
+      this.admin.next(false);
+    }
   }
 
   getMessages(){

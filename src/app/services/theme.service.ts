@@ -16,6 +16,7 @@ export class ThemeService {
     try {
 
       let localDark=JSON.parse(localStorage.getItem('dark'));
+      
       if(localDark!==null){
         //set as revisited user
         this.dark=localDark;

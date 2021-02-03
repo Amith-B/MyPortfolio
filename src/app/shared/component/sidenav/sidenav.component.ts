@@ -28,8 +28,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
   showVisitCardSettings:{showVisitCard:boolean}=(settings as any).default;
 
 
-  constructor(private portfolioinfoService:PortfolioinfoService,
-    private adminService:AdminService) { }
+  constructor(
+    private portfolioinfoService:PortfolioinfoService,
+    private adminService:AdminService
+  ) { }
 
   ngOnInit(): void {
     this.data=<dataInterface>this.portfolioinfoService.getProfileInfo();

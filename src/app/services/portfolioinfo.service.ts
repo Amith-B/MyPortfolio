@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import * as profileInfo from './../../assets/profileInfo.json';
-import * as portfolioInfo from './../../assets/portfolioInfo.json';
+import * as profileInfo from './placeholder/profilePlaceHolder.json';
+import * as portfolioInfo from './placeholder/portfolioPlaceHolder.json';
 import { environment } from './../../environments/environment';
 
 export interface dataInterface {
@@ -95,6 +95,21 @@ export class PortfolioinfoService {
   parsePorfolioData() {
     return this.http.get<Array<portfolioDataInterface>>(
       `${this.firebaseURL}/portfolio.json`,
+      {
+        responseType: 'json',
+      }
+    );
+  }
+
+  parseLocalProfileInfo() {
+    return this.http.get<dataInterface>(`./assets/profile.json`, {
+      responseType: 'json',
+    });
+  }
+
+  parseLocalPorfolioData() {
+    return this.http.get<Array<portfolioDataInterface>>(
+      `./assets/portfolio.json`,
       {
         responseType: 'json',
       }

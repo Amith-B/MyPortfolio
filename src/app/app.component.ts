@@ -61,6 +61,9 @@ export class AppComponent implements OnInit, OnDestroy{
     this.profileSubscription=this.portfolioinfoService.parseProfileInfo()
         .subscribe((data)=>{
           this.portfolioinfoService.setProfileInfo(data);
+        },
+        (error)=>{
+          this.parseLocalProfileInfo()
         });
 
     this.themeSubscription=this.themeService.darkThemeEvent
@@ -71,6 +74,13 @@ export class AppComponent implements OnInit, OnDestroy{
 
   }
   
+  parseLocalProfileInfo(){
+    this.profileSubscription=this.portfolioinfoService.parseLocalProfileInfo()
+      .subscribe((data)=>{
+        this.portfolioinfoService.setProfileInfo(data);
+      });
+  }
+
   
   toggleSideBar(){
     this.sidebarToggle=!this.sidebarToggle

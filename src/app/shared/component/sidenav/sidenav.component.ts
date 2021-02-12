@@ -23,6 +23,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   admin=false;
 
   adminSubscription:Subscription;
+  profileSubscription:Subscription;
 
   showVisitCard=false;
   showVisitCardSettings:{showVisitCard:boolean}=(settings as any).default;
@@ -46,6 +47,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
       })
     }
 
+    this.profileSubscription = this.portfolioinfoService.profileDataChangeEvent.subscribe((data)=>{
+      this.data=data;
+    });
+
 
     this.adminSubscription=this.adminService.admin.subscribe((data)=>{
       this.admin=data;
@@ -55,6 +60,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.adminSubscription.unsubscribe();
+    this.profileSubscription.unsubscribe();
   }
 
 }

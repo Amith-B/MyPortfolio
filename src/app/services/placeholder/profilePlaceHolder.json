@@ -1,0 +1,25 @@
+{
+	"eduction": [],
+	"experience": [],
+	"info": {
+		"about_heading": "",
+		"about_para": "",
+		"address": {
+			"line1": "",
+			"line2": ""
+		},
+		"city": "",
+		"degree": "",
+		"dept": "",
+		"dob": "1997-04-15T18:30:00.000Z",
+		"email": "",
+		"facebook": "",
+		"github": "",
+		"linkedin": "",
+		"passout": "",
+		"phone": "",
+		"profileURL": "./assets/profile.jpg"
+	},
+	"knowledge": [
+	]
+}
